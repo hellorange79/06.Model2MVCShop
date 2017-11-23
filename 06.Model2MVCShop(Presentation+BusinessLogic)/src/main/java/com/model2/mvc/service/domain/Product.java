@@ -30,7 +30,7 @@ public class Product {
 		this.fileName = fileName;
 	}
 	public String getManuDate() {
-		return manuDate;
+		return manuDate.replace("-", "").trim();
 	}
 	public void setManuDate(String manuDate) {
 		this.manuDate = manuDate;

@@ -5,6 +5,7 @@ import org.aspectj.lang.ProceedingJoinPoint;
 /*
  * FileName : PojoAspectJ.java
  *	:: XML 에 선언적으로 aspect 의 적용   
+ *	로그를 찍어주는 .java
   */
 public class LogAspectJ {
 
