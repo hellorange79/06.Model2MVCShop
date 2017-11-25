@@ -10,7 +10,7 @@ public interface ProductDao {
 	
 	public void insertProduct(Product product) throws Exception;
 	
-	public Product findProduct(int prodNo) throws Exception;
+	public Product getProduct(int prodNo) throws Exception;
 
 	public List<Product> getProductList(Search search) throws Exception;
 

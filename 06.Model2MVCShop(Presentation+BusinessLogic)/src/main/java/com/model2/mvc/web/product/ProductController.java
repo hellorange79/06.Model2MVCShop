@@ -4,6 +4,7 @@ package com.model2.mvc.web.product;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -56,7 +57,8 @@ public class ProductController {
 		return "forward:/product/addProduct.jsp";
 	}
 	@RequestMapping("/listProduct.do")
-	public String getProductList(@ModelAttribute("search") Search search, Model model, HttpServletRequest request)throws Exception {
+	public String getProductList(@ModelAttribute("search") Search search, Model model,
+						HttpServletRequest request)throws Exception {
 		
 		System.out.println("/listProduct.do");
 		
@@ -82,14 +84,44 @@ public class ProductController {
 		return "forward:/product/listProduct.jsp?menu="+menu;
 	}
 	@RequestMapping("/getProduct.do")
-	public String getProduct(@RequestParam("prodNo") int prodNo, Model model)throws Exception {
+	public String getProduct(@RequestParam("prodNo") int prodNo, Model model)
+													throws Exception {
 		
 		System.out.println("/getProduct.do");
 		
 		Product product= productService.getProduct(prodNo);
 		
-		model.addAttribute("prodNo", prodNo);
+		model.addAttribute("product", product);
+		System.out.println("prod===>"+product);
 		
 		return "forward:/product/getProduct.jsp";
 	}
+	
+	@RequestMapping("/updateProductView.do")
+	public String updateProductView(@RequestParam("prodNo") int prodNo,Model model)
+									throws Exception {
+		
+		System.out.println("/updateProductView.do");
+		
+		
+		Product	product =productService.getProduct(prodNo);
+		
+		model.addAttribute("product", product);
+		
+		return "forward:/product/updateProductView.jsp";
+	}
+	
+	@RequestMapping("/updateProduct.do")
+	public String updateProduct( @ModelAttribute("product") Product product,Model model,
+								HttpSession session)throws Exception{
+		
+		System.out.println("/updateProduct.do");
+		
+		productService.updateProduct(product);
+		System.out.println("Controllerupdate===> "+product);
+		
+		
+		return "redirect:/getProduct.do?prodNo="+product.getProdNo();
+	}
+	
 }

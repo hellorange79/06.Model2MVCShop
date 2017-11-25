@@ -10,7 +10,7 @@
 	<resultMap id="productSelectMap" type="product">
 		<result property="prodNo" column="prod_no" jdbcType="NUMERIC" />
 		<result property="prodName" column="prod_name" jdbcType="VARCHAR" />
-		<result property="prodDetail" column="prod_detail " jdbcType="VARCHAR" />
+		<result property="prodDetail" column="prod_detail" jdbcType="VARCHAR" />
 		<result property="manuDate" column="manufacture_day" jdbcType="VARCHAR" />
 		<result property="price" column="price" jdbcType="NUMERIC" />
 		<result property="fileName" column="image_file" jdbcType="VARCHAR" />
@@ -32,8 +32,8 @@
 	<select id="getProduct" parameterType="string" resultMap="productSelectMap">
 		SELECT
 		prod_no, prod_name, prod_detail, image_file,
-		Manufacture_Day, Price,
-		Reg_date from product
+		manufacture_day, price, reg_date 
+		from product
 		where prod_no = #{value}
 	</select>
 

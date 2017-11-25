@@ -95,6 +95,7 @@ public class UserController {
 		userService.updateUser(user);
 		
 		String sessionId=((User)session.getAttribute("user")).getUserId();
+		System.out.println("SessiondId : "+sessionId);
 		if(sessionId.equals(user.getUserId())){
 			session.setAttribute("user", user);
 		}

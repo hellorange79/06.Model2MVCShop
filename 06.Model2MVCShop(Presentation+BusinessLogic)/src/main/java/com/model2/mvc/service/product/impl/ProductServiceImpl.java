@@ -21,6 +21,7 @@ public class ProductServiceImpl implements ProductService{
 	@Autowired
 	@Qualifier("productDaoImpl")
 	private ProductDao productDao;
+	
 	public void setProductDao(ProductDao productDao) {
 		this.productDao = productDao;
 	}
@@ -39,7 +40,7 @@ public class ProductServiceImpl implements ProductService{
 	//상세정보
 	public Product getProduct(int prodNo) throws Exception {
 		//System.out.println(prodNo);
-		return productDao.findProduct(prodNo);
+		return productDao.getProduct(prodNo);
 	}
 
 	//상품목록
@@ -57,7 +58,7 @@ public class ProductServiceImpl implements ProductService{
 
 	//상품수정
 	public void updateProduct(Product product) throws Exception {
-		System.out.println(product);
+		System.out.println("ProductServiceImpl : "+product);
 		productDao.updateProduct(product);
 		
 	}
